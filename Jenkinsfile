@@ -1,3 +1,4 @@
+#!/bin/bash
 //SCRIPTED
 //node {
 	//stage('Build') {
