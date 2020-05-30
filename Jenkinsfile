@@ -93,6 +93,24 @@ pipeline{
 				}
 			}
 		
+		stage ('Build Docker Image') {
+			steps {
+				//docker build -t lalithprasad12/hello-world-python:$env.BUILD_TAG This is a primitive way of doing things
+				script {
+					dockerImage = docker.build("lalithprasad12/hello-world-python:${env.BUILD_TAG}")
+					}
+				}
+			}
+		
+		stage ('Push Docker Image') {
+			steps {
+				script {
+					dockerImage.push();
+					dockerImage.push('latest')
+					}
+				
+				}
+			}
 		
 	}
 	
