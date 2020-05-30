@@ -97,7 +97,7 @@ pipeline{
 			steps {
 				//docker build -t lalithprasad12/hello-world-python:$env.BUILD_TAG This is a primitive way of doing things
 				script {
-					dockerImage = docker.build("lalithprasad12/hello-world-python:${env.BUILD_TAG}")
+					dockerImage = docker.build("lalithprasad12/currency-exchange-devops:${env.BUILD_TAG}")
 					}
 				}
 			}
