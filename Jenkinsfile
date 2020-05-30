@@ -93,6 +93,12 @@ pipeline{
 				}
 			}
 		
+		stage ('Package') {
+			steps {
+				sh 'mvn package -DskipTests'
+				}
+			}
+		
 		stage ('Build Docker Image') {
 			steps {
 				//docker build -t lalithprasad12/hello-world-python:$env.BUILD_TAG This is a primitive way of doing things
@@ -105,8 +111,9 @@ pipeline{
 		stage ('Push Docker Image') {
 			steps {
 				script {
+					docker.withRegistry('', 'dockerhub')
 					dockerImage.push();
-					dockerImage.push('latest')
+					dockerImage.push('latest1')
 					}
 				
 				}
